@@ -10,7 +10,7 @@ class InputHandler {
     this.number = null;
     this.pseudoElements = [{x: 800, y: 500}, {x: 840, y: 450}, {x: 900, y: 415}, {x: 965, y: 395}];
 
-    window.addEventListener("mousedown", (e)=> {
+    window.addEventListener("touchstart", (e)=> {
       if (e.target.nodeName !== "CANVAS") return;
 
       const x = e.offsetX / e.target.offsetWidth * e.target.width;
@@ -26,14 +26,14 @@ class InputHandler {
       this.offsetY = y;
     });
 
-    window.addEventListener("mousemove", (e)=> {
+    window.addEventListener("touchmove", (e)=> {
       if (!this.isMove) return;
 
       this.offsetX = e.offsetX / e.target.offsetWidth * e.target.width;
       this.offsetY = e.offsetY / e.target.offsetHeight * e.target.height;
     });
 
-    window.addEventListener("mouseup", (e)=> {
+    window.addEventListener("touchend", (e)=> {
       if (this.isClickableElementTouched) {
         const x = e.offsetX / e.target.offsetWidth * e.target.width;
         const y = e.offsetY / e.target.offsetHeight * e.target.height;
